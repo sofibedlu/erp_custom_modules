@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+        <record id="view_applicant_form_inherit" model="ir.ui.view">
+            <field name="name">hr.applicant.form.inherit</field>
+            <field name="model">hr.applicant</field>
+            <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+            <field name="arch" type="xml">
+            
+                <xpath expr="//notebook" position="inside">
+                    <page string="Assessment">
+                         <field name="assessment_ids"  mode="kanban">
+                              <kanban create="false">
+                                      <field name="form_id"/>
+                                      <templates>
+                                          <t t-name="kanban-box">
+                                               <div t-attf-class="oe_kanban_global_click o_kanban_record_has_image">
+                                                  <div class="o_kanban_image_fill_block">
+                                                      <div class="o_kanban_record_top">
+                                                        
+                                                      </div>
+                                                        <div class="o_kanban_record_body">
+                                                              <field name="form_id"/>
+                                                        </div>
+                                                </div>
+                                             </div>
+                                          </t>
+                                      </templates>
+                            </kanban>
+                       </field>
+                        <group>
+                            <field name="assessment_form_id"  options="{'no_create_edit': True, 'no_open': True}" />
+                        </group>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

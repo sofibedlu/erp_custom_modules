@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_assessment_form,assessment.form,model_assessment_form,applicant_assessment.group_assessment_form_user,1,1,1,1
+access_assessment_form_line,assessment.form.line,model_assessment_form_line,applicant_assessment.group_assessment_form_user,1,1,1,1
+access_applicant_assessment,applicant.assessment,model_applicant_assessment,applicant_assessment.group_applicant_assessment_user,1,1,1,1
+access_applicant_assessment_line,applicant.assessment.line,model_applicant_assessment_line,applicant_assessment.group_applicant_assessment_user,1,1,1,1

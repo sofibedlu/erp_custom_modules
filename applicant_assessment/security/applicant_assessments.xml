@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <!-- Group for Assessment Form -->
+        <record id="group_assessment_form_user" model="res.groups">
+            <field name="name">Assessment Form User</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+        </record>
+
+        <!-- Group for Applicant Assessment -->
+        <record id="group_applicant_assessment_user" model="res.groups">
+            <field name="name">Applicant Assessment User</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+        </record>
+    </data>
+</odoo>

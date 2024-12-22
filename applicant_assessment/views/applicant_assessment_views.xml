@@ -1,0 +1,75 @@
+<odoo>
+    <data>
+        <!--<record id="applicant_assessment_tree_view" model="ir.ui.view">
+            <field name="name">applicant.assessment.tree</field>
+            <field name="model">applicant.assessment</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="partner_name"/>
+                    <field name="form_id" readonly="1"/>
+                    <field name="total_score"/>
+                </tree>
+            </field>
+        </record>-->
+         <record id="applicant_assessment_form_view" model="ir.ui.view">
+            <field name="name">applicant.assessment.form</field>
+            <field name="model">applicant.assessment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="partner_name"  readonly="1" options="{'no_create_edit': True, 'no_open': True}" />
+                            <field name="form_id"  options="{'no_create_edit': True, 'no_open': True}" readonly="1"/>
+                            <field name="total_score"/>
+                        </group>
+                           <notebook>
+                                <page string="Assessment">
+                                    <div style="text-align:center; font-style: italic; font-weight: bold; padding: 10px;">
+                                        5 – Exceptional 4 – Above Average 3 – Average 2 – Satisfactory 1 – Unsatisfactory
+                                    </div>
+                                    <field name="line_ids"  mode="tree">
+                                            <tree editable="bottom" create="false" delete="false">
+                                               <field name="question_number" readonly="1"/>
+                                                <field name="question" readonly="1"/>
+                                                 <field name="score" />
+                                            </tree>
+                                    </field>
+                                </page>
+                                <page string="Other Details">
+                                <group>
+                                    <field name="notes"/>
+                                    <field name="interviewer_name"/>
+                                    <field name="interviewer_signature" widget="signature"/>
+                                    <field name="interview_date"/>
+                                </group>
+                                <group>
+                                    <field name="current_earning"/>
+                                    <field name="expected_salary"/>
+                                    <field name="expected_start_date"/>
+                                    <field name="expected_benefits"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="job_id" string="Position" options="{'no_create_edit': True, 'no_open': True}" readonly="1"/>
+                                        <field name="education" string="Education"/>
+                                        <field name="relevant_work_experience" string="Relevant Work Experience"/>
+                                    </group>
+                                    <group>
+                                        <field name="recommendation" widget="radio" options="{'selection': [('hire_now', 'Hire Now'), ('do_not_hire', 'Do Not Hire'), ('indifferent', 'Indifferent')]}"/>
+                                    </group>
+                                </group>
+                            </page>
+                            </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--<record id="action_applicant_assessment" model="ir.actions.act_window">
+            <field name="name">Applicant Assessments</field>
+            <field name="res_model">applicant.assessment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_applicant_assessment" name="Applicant Assessments" parent="hr_recruitment.menu_hr_recruitment_root" action="action_applicant_assessment" sequence="20"/>
+        -->
+    </data>
+</odoo>

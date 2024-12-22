@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+        <record id="assessment_form_tree_view" model="ir.ui.view">
+            <field name="name">assessment.form.tree</field>
+            <field name="model">assessment.form</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="assessment_form_form_view" model="ir.ui.view">
+            <field name="name">assessment.form.form</field>
+            <field name="model">assessment.form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Questions">
+                                <field name="line_ids" mode="tree">
+                                    <tree editable="bottom">
+                                        <field name="question_number"/>
+                                        <field name="question"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_assessment_form" model="ir.actions.act_window">
+            <field name="name">Assessment Forms</field>
+            <field name="res_model">assessment.form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_assessment_form" name="Assessment Forms"
+                  parent="hr_recruitment.menu_hr_recruitment_configuration"
+                  action="action_assessment_form" sequence="20"/>
+    </data>
+</odoo>
