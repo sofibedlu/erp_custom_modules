@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <!-- Manpower Planning Manager Group -->
+        <record id="group_manpower_planning_manager" model="res.groups">
+            <field name="name">Manpower Planning Manager</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+        </record>
+        <!-- Manpower Planning User Group -->
+        <record id="group_manpower_planning_user" model="res.groups">
+            <field name="name">Manpower Planning User</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+        </record>
+    </data>
+</odoo>

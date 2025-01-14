@@ -1,0 +1,116 @@
+<odoo>
+    <record id="view_recruitment_request_form" model="ir.ui.view">
+        <field name="name">recruitment.request.form</field>
+        <field name="model">recruitment.request</field>
+        <field name="arch" type="xml">
+            <form string="Recruitment Request">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,checked_by_hr_manager,checked_by_hr_director,approved_by_chro,approved_by_ceo,rejected,done" readonly="1"/>
+                    <button string="Submit" type="object" name="action_submit" states="draft" class="btn-primary"/>
+                    <button string="Check by HR Manager" type="object" name="action_check_by_hr_manager" states="submitted" class="btn-info" groups="recruitment_request.group_hr_manager"/>
+                    <button string="Check by HR Director" type="object" name="action_check_by_hr_director" states="checked_by_hr_manager" class="btn-info" groups="recruitment_request.group_hr_director"/>
+                    <button string="Approve by CHRO" type="object" name="action_approve_by_chro" states="checked_by_hr_director" class="btn-success" groups="recruitment_request.group_chro"/>
+                    <button string="Approve by CEO" type="object" name="action_approve_by_ceo" states="approved_by_chro" class="btn-success" groups="recruitment_request.group_ceo"/>
+                    <button string="Reject" type="object" name="action_reject" states="submitted,checked_by_hr_manager,checked_by_hr_director,approved_by_chro" class="btn-danger" groups="recruitment_request.group_recruitment_manager"/>
+                    <button string="Done" type="object" name="action_done" states="approved_by_ceo" class="btn-primary" groups="recruitment_request.group_recruitment_manager"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name"/></h1>
+
+                        <h1>
+                            <label for="job_title" class="oe_edit_only"/>
+                            <field name="job_title" class="oe_inline"/>
+                        </h1>
+                    </div>
+                    <group name="main_group">
+                        <group name="left_group">
+                            <field name="department_id" domain="[('manager_id.user_id', '=', requester_id)]" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="job_position" domain="[('department_id', '=', department_id)]" options="{'no_create': True, 'no_open': True}" attrs="{'readonly': [('department_id', '=', False)]}"/>
+                            <field name="job_grade" string="Job Grade"/>
+                            <field name="job_no"/> <!-- New field -->
+                            <field name="employment_type"/>
+                            <field name="number_of_employees" string="No of Employees"/>
+                            <field name="requested_date"/>
+                            <field name="requester_id" readonly="1"/>
+                        </group>
+                        <group name="right_group">
+                            <field name="education_level" string='Education Level'/>
+                            <field name="field_of_study" string="Specialization"/>
+                            <field name="professional_qualification" string="Preferred Qualification"/>
+                            <field name="experience_years"/>
+                            <field name="work_place"/>
+                        </group>
+                    </group>
+                    <group name="description_group">
+                        <field name="justification"/>
+                        <field name="remarks"/>
+                        <field name="approval_comment" attrs="{'invisible': [('approval_comment', '=', False)]}"/>
+                        <field name="rejection_comment" attrs="{'invisible': [('rejection_comment', '=', False)]}"/>
+                    </group>
+                </sheet>
+                <!-- Discuss widgets -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_recruitment_request_tree" model="ir.ui.view">
+        <field name="name">recruitment.request.tree</field>
+        <field name="model">recruitment.request</field>
+        <field name="arch" type="xml">
+            <tree string="Recruitment Requests">
+                <field name="name"/>
+                <field name="requester_id"/>
+                <field name="department_id"/>
+                <field name="job_position"/>
+                <field name="job_grade"/>
+                <field name="employment_type"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hr_competency_profile_search" model="ir.ui.view">
+        <field name="name">hr.applicant.competency.profile.search</field>
+        <field name="model">hr.applicant</field>
+        <field name="arch" type="xml">
+            <search string="Competency Profile">
+                <field name="partner_name"/>
+                <field name="name"/>
+                <field name="job_id"/>
+                <field name="department_id"/>
+                <field name="stage_id"/>
+                <group expand="0" string="Group By">
+                    <filter string="Job" name="group_by_job" context="{'group_by': 'job_id'}"/>
+                    <filter string="Department" name="group_by_department" context="{'group_by': 'department_id'}"/>
+                    <filter string="Stage" name="group_by_stage" context="{'group_by': 'stage_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_recruitment_request" model="ir.actions.act_window">
+        <field name="name">Recruitment Requests</field>
+        <field name="res_model">recruitment.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_hr_competency_profile" model="ir.actions.act_window">
+        <field name="name">Competency Profile</field>
+        <field name="res_model">hr.applicant</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_hr_competency_profile_search"/>
+        <field name="context">{'create': False}</field>
+    </record>
+    
+    <menuitem id="menu_recruitment_request" name="Recruitment Requests" parent="hr_recruitment.menu_hr_recruitment_root"/>
+    <menuitem id="submenu_recruitment_request" name="Requests" parent="menu_recruitment_request" action="action_recruitment_request"/>
+    <!-- Competency Profile Menu-->
+    <menuitem id="menu_hr_competency_profile" name="Competency Profile" parent="hr_recruitment.menu_hr_recruitment_root" sequence="15" action="action_hr_competency_profile"/>
+</odoo>

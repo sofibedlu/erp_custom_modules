@@ -1,0 +1,74 @@
+<odoo>
+    <data>
+        <!-- Manpower Planning Form View -->
+        <record id="view_manpower_planning_form" model="ir.ui.view">
+            <field name="name">manpower.planning.form</field>
+            <field name="model">manpower.planning</field>
+            <field name="arch" type="xml">
+                <form string="Manpower Planning">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="department_id" />
+                                <field name="job_position" domain="[('department_id', '=', department_id)]" attrs="{'readonly': [('department_id', '=', False)]}" />
+                                <field name="job_grade" />
+                                <field name="job_number" />
+                                <field name="number_of_persons" string="No of Persons"/>
+                                <field name="type_of_employment"/>
+                                <field name="planning_year" />
+                            </group>
+                             <group>
+                                 <field name="level_of_education" />
+                                 <field name="field_of_study" string="Specialization"/>
+                                 <field name="desirable_qualification" string="Preferred Qualification"/>
+                                 <field name="experience_years"/>
+                            </group>
+                        </group>
+                       <group>
+                           <field name="person_specifications" string="Qualifications"/>
+                           <field name="skill_set" string="Skill Set"/>
+                           <field name="english_competency" />
+                           <field name="remarks" />
+                       </group>
+                   </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Manpower Planning Tree View -->
+        <record id="view_manpower_planning_tree" model="ir.ui.view">
+            <field name="name">manpower.planning.tree</field>
+            <field name="model">manpower.planning</field>
+            <field name="arch" type="xml">
+                <tree string="Manpower Planning">
+                    <field name="department_id" />
+                    <field name="job_position" />
+                    <field name="number_of_persons" string="No of Persons"/>
+                    <field name="type_of_employment"/>
+                    <field name="planning_year" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action to open Manpower Planning -->
+        <record id="action_manpower_planning" model="ir.actions.act_window">
+           <field name="name">Manpower Planning</field>
+           <field name="res_model">manpower.planning</field>
+           <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Main Menu under recruitment -->
+        <menuitem id="menu_manpower_planning_main"
+                  name="Manpower Planning"
+                  parent="hr_recruitment.menu_hr_recruitment_root"
+                  sequence="10"
+                   />
+
+         <menuitem id="menu_manpower_planning"
+                  name="Man Power Planning"
+                  action="action_manpower_planning"
+                  parent="menu_manpower_planning_main"
+                  sequence="10"
+                />
+    </data>
+</odoo>

@@ -1,0 +1,20 @@
+.priority-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.priority-tag.tag-low {
+    background-color: green;
+}
+
+.priority-tag.tag-medium {
+    background-color: orange;
+}
+
+.priority-tag.tag-high {
+    background-color: red;
+}
+

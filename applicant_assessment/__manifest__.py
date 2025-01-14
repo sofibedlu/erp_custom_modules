@@ -1,6 +1,6 @@
 {
     'name': 'Applicant Assessment',
-    'author': 'sofi',
+    'author': 'Sofi',
     'version': '1.0',
     'summary': 'Manage and record assessments for job applicants.',
     'description': 'Allows selecting and filling out different assessment forms for applicants.',

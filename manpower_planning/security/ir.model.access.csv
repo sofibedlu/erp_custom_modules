@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_manpower_planning_manager,manpower.planning manager,model_manpower_planning,manpower_planning.group_manpower_planning_manager,1,1,1,1
+access_manpower_planning_user,manpower.planning user,model_manpower_planning,manpower_planning.group_manpower_planning_user,1,0,0,0

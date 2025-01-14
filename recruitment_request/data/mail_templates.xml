@@ -1,0 +1,144 @@
+
+<odoo>
+    <record id="mail_template_submitted" model="mail.template">
+        <field name="name">Recruitment Request Submitted</field>
+        <field name="model_id" ref="model_recruitment_request"/>
+        <field name="subject">Recruitment Request Submitted - {{object.name}}</field>
+        <field name="body_html" type="html">
+            <div>
+                The recruitment request titled "<t t-out="object.name"/>" for the job position of <t t-out="object.job_position.name"/> has been submitted.<br/>
+                <b>Department:</b> <t t-out="object.department_id.name"/><br/>
+                <b>Requested By:</b> <t t-out="object.requester_id.name"/><br/>
+                <br/>
+                Please review the request.
+                <br/>
+                <div style="display: inline-block; margin: 15px 0px; text-align: center;">
+                    <a t-att-href="'/mail/view?model=recruitment.request&amp;res_id=%s' % object.id"
+                        target="_blank"
+                        style="padding: 5px 10px; color: #ffffff; text-decoration: none; background-color: #875a7b; border: 1px solid #875a7b; border-radius: 3px;">
+                        Click here to view
+                    </a>
+                </div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+    
+    <record id="mail_template_checked_by_hr_manager" model="mail.template">
+        <field name="name">Recruitment Request Checked by HR Manager</field>
+        <field name="model_id" ref="model_recruitment_request"/>
+        <field name="subject">Recruitment Request Checked by HR Manager - {{object.name}}</field>
+        <field name="body_html" type="html">
+            <div>
+                The recruitment request titled "<t t-out="object.name"/>" for the job position of <t t-out="object.job_position.name"/> has been checked by the HR Manager.<br/>
+                <b>Department:</b> <t t-out="object.department_id.name"/><br/>
+                <b>Requested By:</b> <t t-out="object.requester_id.name"/><br/>
+                <br/>
+                Please review the request.
+                <br/>
+                <div style="display: inline-block; margin: 15px 0px; text-align: center;">
+                    <a t-att-href="'/mail/view?model=recruitment.request&amp;res_id=%s' % object.id"
+                        target="_blank"
+                        style="padding: 5px 10px; color: #ffffff; text-decoration: none; background-color: #875a7b; border: 1px solid #875a7b; border-radius: 3px;">
+                        Click here to view
+                    </a>
+                </div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+
+    <record id="mail_template_checked_by_hr_director" model="mail.template">
+        <field name="name">Recruitment Request Checked by HR Director</field>
+        <field name="model_id" ref="model_recruitment_request"/>
+        <field name="subject">Recruitment Request Checked by HR Director - {{object.name}}</field>
+        <field name="body_html" type="html">
+            <div>
+                The recruitment request titled "<t t-out="object.name"/>" for the job position of <t t-out="object.job_position.name"/> has been checked by the HR Director.<br/>
+                <b>Department:</b> <t t-out="object.department_id.name"/><br/>
+                <b>Requested By:</b> <t t-out="object.requester_id.name"/><br/>
+                <br/>
+                Please review the request.
+                <br/>
+                <div style="display: inline-block; margin: 15px 0px; text-align: center;">
+                    <a t-att-href="'/mail/view?model=recruitment.request&amp;res_id=%s' % object.id"
+                        target="_blank"
+                        style="padding: 5px 10px; color: #ffffff; text-decoration: none; background-color: #875a7b; border: 1px solid #875a7b; border-radius: 3px;">
+                        Click here to view
+                    </a>
+                </div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+
+    <record id="mail_template_approved_by_chro" model="mail.template">
+        <field name="name">Recruitment Request Approved by CHRO</field>
+        <field name="model_id" ref="model_recruitment_request"/>
+        <field name="subject">Recruitment Request Approved by CHRO - {{object.name}}</field>
+        <field name="body_html" type="html">
+            <div>
+                The recruitment request titled "<t t-out="object.name"/>" for the job position of <t t-out="object.job_position.name"/> has been approved by the CHRO.<br/>
+                <b>Department:</b> <t t-out="object.department_id.name"/><br/>
+                <b>Requested By:</b> <t t-out="object.requester_id.name"/><br/>
+                <br/>
+                Please review the request.
+                <br/>
+                <div style="display: inline-block; margin: 15px 0px; text-align: center;">
+                    <a t-att-href="'/mail/view?model=recruitment.request&amp;res_id=%s' % object.id"
+                        target="_blank"
+                        style="padding: 5px 10px; color: #ffffff; text-decoration: none; background-color: #875a7b; border: 1px solid #875a7b; border-radius: 3px;">
+                        Click here to view
+                    </a>
+                </div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+
+    <record id="mail_template_approved_by_ceo" model="mail.template">
+        <field name="name">Recruitment Request Approved by CEO</field>
+        <field name="model_id" ref="model_recruitment_request"/>
+        <field name="subject">Recruitment Request Approved by CEO - {{object.name}}</field>
+        <field name="body_html" type="html">
+            <div>
+                The recruitment request titled "<t t-out="object.name"/>" for the job position of <t t-out="object.job_position.name"/> has been approved by the CEO.<br/>
+                <b>Department:</b> <t t-out="object.department_id.name"/><br/>
+                <b>Requested By:</b> <t t-out="object.requester_id.name"/><br/>
+                <b>Approval Comment:</b> <t t-out="object.approval_comment"/><br/>
+                <br/>
+                <div style="display: inline-block; margin: 15px 0px; text-align: center;">
+                    <a t-att-href="'/mail/view?model=recruitment.request&amp;res_id=%s' % object.id"
+                        target="_blank"
+                        style="padding: 5px 10px; color: #ffffff; text-decoration: none; background-color: #875a7b; border: 1px solid #875a7b; border-radius: 3px;">
+                        Click here to view
+                    </a>
+                </div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+
+    <record id="mail_template_rejected" model="mail.template">
+        <field name="name">Recruitment Request Rejected</field>
+        <field name="model_id" ref="model_recruitment_request"/>
+        <field name="subject">Recruitment Request Rejected - {{object.name}}</field>
+        <field name="body_html" type="html">
+            <div>
+                The recruitment request titled "<t t-out="object.name"/>" for the job position of <t t-out="object.job_position.name"/> has been rejected.<br/>
+                <b>Department:</b> <t t-out="object.department_id.name"/><br/>
+                <b>Requested By:</b> <t t-out="object.requester_id.name"/><br/>
+                <b>Rejection Comment:</b> <t t-out="object.rejection_comment"/><br/>
+                <br/>
+                <div style="display: inline-block; margin: 15px 0px; text-align: center;">
+                    <a t-att-href="'/mail/view?model=recruitment.request&amp;res_id=%s' % object.id"
+                        target="_blank"
+                        style="padding: 5px 10px; color: #ffffff; text-decoration: none; background-color: #875a7b; border: 1px solid #875a7b; border-radius: 3px;">
+                        Click here to view
+                    </a>
+                </div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+</odoo>

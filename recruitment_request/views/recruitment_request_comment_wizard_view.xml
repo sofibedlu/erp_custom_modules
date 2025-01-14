@@ -1,0 +1,25 @@
+<odoo>
+    <record id="view_recruitment_request_comment_wizard_form" model="ir.ui.view">
+        <field name="name">recruitment.request.comment.wizard.form</field>
+        <field name="model">recruitment.request.comment.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Add Comment">
+                <group>
+                    <field name="comment"/>
+                </group>
+                <footer>
+                    <button string="Submit" type="object" name="action_submit_comment" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_recruitment_request_comment_wizard" model="ir.actions.act_window">
+        <field name="name">Add Comment</field>
+        <field name="res_model">recruitment.request.comment.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_recruitment_request_comment_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>
